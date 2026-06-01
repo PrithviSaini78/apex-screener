@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: "Inter", system-ui, sans-serif;
+  --font-dm-mono: "DM Mono", "JetBrains Mono", monospace;
+  --font-syne: "Syne", sans-serif;
+  --row-height: 36px;
+  --header-height: 48px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  background: #0a0b0e;
+  color: #e8eaf0;
+  font-family: var(--font-inter);
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbars ─────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ── Flash animations ───────────────────────────────────────────────────────── */
+@keyframes flash-up {
+  0% { background-color: rgba(0, 201, 122, 0.2); }
+  100% { background-color: transparent; }
+}
+@keyframes flash-down {
+  0% { background-color: rgba(255, 71, 87, 0.2); }
+  100% { background-color: transparent; }
+}
+.flash-up { animation: flash-up 0.55s ease-out forwards; }
+.flash-down { animation: flash-down 0.55s ease-out forwards; }
+
+/* ── WS pulse ───────────────────────────────────────────────────────────────── */
+@keyframes ws-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.ws-pulse { animation: ws-pulse 1.4s ease-in-out infinite; }
+
+/* ── Slide-in for chart panel ───────────────────────────────────────────────── */
+@keyframes slide-in-right {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.slide-in-right { animation: slide-in-right 0.22s ease-out; }
+
+/* ── Utilities ──────────────────────────────────────────────────────────────── */
+.font-mono { font-family: var(--font-dm-mono) !important; }
+.font-display { font-family: var(--font-syne) !important; }
+
+/* Table cell truncation */
+.cell-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 0;
+}
+
+/* Prevent text selection on table headers */
+.no-select { user-select: none; }
+
+/* Focus ring */
+.focus-ring:focus-visible {
+  outline: 2px solid rgba(0, 212, 170, 0.7);
+  outline-offset: 2px;
+}
+
+/* Input reset */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] { -moz-appearance: textfield; }
